@@ -66,9 +66,15 @@ Rails.application.configure do
   # config.accept_user_creation = false
 
   # Rutebanken
-  config.company_name = "Entur"
-  config.company_theme = "#5AC39A" # Entur color
-  config.company_contact = "http://www.entur.org/kontakt/"
+  # config.company_name = "Entur"
+  # config.company_theme = "#5AC39A" # Entur color
+  # config.company_contact = "http://www.entur.org/kontakt/"
+  # config.accept_user_creation = false
+
+  # Nouvelle Aquitaine
+  config.company_name = "Nouvelle Aquitaine"
+  config.company_theme = "#C31632" # Entur color
+  config.company_contact = "https://www.nouvelle-aquitaine.fr/contactez-nous"
   config.accept_user_creation = false
 
   # file to data for demo
