@@ -297,9 +297,11 @@ ActiveRecord::Schema.define(version: 20180124120000) do
     t.integer  "to_visit_number"
   end
 
+  add_index "interchanges", ["from_point"], name: "interchanges_from_point_key", using: :btree
   add_index "interchanges", ["from_vehicle_journey"], name: "interchanges_from_vehicle_journey_key", using: :btree
   add_index "interchanges", ["objectid"], name: "interchanges_objectid_key", unique: true, using: :btree
   add_index "interchanges", ["objectid"], name: "interchanges_to_vehicle_journey_key", using: :btree
+  add_index "interchanges", ["to_point"], name: "interchanges_to_poinnt_key", using: :btree
 
   create_table "journey_frequencies", id: :bigserial, force: :cascade do |t|
     t.integer  "vehicle_journey_id",         limit: 8
@@ -729,6 +731,9 @@ ActiveRecord::Schema.define(version: 20180124120000) do
   add_index "vehicle_journeys", ["objectid"], name: "vehicle_journeys_objectid_key", unique: true, using: :btree
   add_index "vehicle_journeys", ["route_id"], name: "index_vehicle_journeys_on_route_id", using: :btree
 
+  add_foreign_key "access_links", "access_points", name: "aclk_acpt_fkey", on_delete: :cascade
+  add_foreign_key "access_links", "stop_areas", name: "aclk_area_fkey", on_delete: :cascade
+  add_foreign_key "access_points", "stop_areas", name: "access_area_fkey", on_delete: :cascade
   add_foreign_key "connection_links", "stop_areas", column: "arrival_id", name: "colk_endarea_fkey", on_delete: :cascade
   add_foreign_key "connection_links", "stop_areas", column: "departure_id", name: "colk_startarea_fkey", on_delete: :cascade
   add_foreign_key "footnotes_journey_patterns", "footnotes", name: "footnotes_journey_patterns_footnotes_fkey", on_delete: :cascade
