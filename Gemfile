@@ -158,14 +158,14 @@ end
 
 
 # IEVKIT
-gem 'ievkit',  git: 'https://github.com/entur/ievkit.git', branch: 'master' #'~> 0.3.0'
-gem 'ievkit_views', git: 'https://github.com/entur/ievkit_views.git', branch: 'master' #'~> 0.2.2'
+gem 'ievkit',  git: 'https://github.com/rutebanken/ievkit.git', branch: 'master' #'~> 0.3.0'
+gem 'ievkit_views', git: 'https://github.com/rutebanken/ievkit_views.git', branch: 'master' #'~> 0.2.2'
 
 # I18n
 gem 'rails-i18n', '~> 4.0.0'
 gem 'devise-i18n'
-gem 'chouette2-i18n', git: 'https://github.com/entur/chouette2-i18n.git', :branch => 'master'
-gem 'chouette-projects-i18n', git: 'https://github.com/entur/chouette-projects-i18n.git', :branch => 'master'
+gem 'chouette2-i18n', git: 'https://github.com/rutebanken/chouette2-i18n.git', :branch => 'master'
+gem 'chouette-projects-i18n', git: 'https://github.com/rutebanken/chouette-projects-i18n.git', :branch => 'master'
 
 # Rails Assets
 source 'https://rails-assets.org' do
