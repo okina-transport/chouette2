@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'bundler', '~> 1.16.1'
+gem 'bundler', '~> 1.13.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.7'
 
@@ -44,8 +44,8 @@ gem 'faraday_middleware', '~> 0.11.0.1'
 gem 'figaro', '~> 1.1.1'
 
 platforms :ruby do
-  gem 'therubyracer', '~> 0.12.3'
-  gem 'pg', '= 0.19'
+  gem 'therubyracer', '~> 0.12'
+  gem 'pg'
   gem 'sqlite3'
 end
 
@@ -53,7 +53,7 @@ gem 'activerecord-postgis-adapter', '~> 3.1.4'
 gem 'polylines'
 
 # Authentication
-gem 'devise', '~> 4.4.0'
+gem 'devise', '~> 3.5.10'
 gem 'devise-encryptable'
 gem 'devise_invitable'
 gem 'omniauth'
