@@ -8,17 +8,18 @@ module Chouette
 
     default_scope { where(journey_category: journey_categories[:timed]) }
 
-    attr_accessor :transport_mode_name, :transport_submode, :recalculate_offset
+    attr_accessor :transport_mode_name, :transport_submode, :recalculate_offset, :service_alteration_name
     attr_reader :time_table_tokens, :footnote_tokens
 
     def self.nullable_attributes
-      [:transport_mode, :transport_submode_name, :published_journey_name, :vehicle_type_identifier, :published_journey_identifier, :comment, :status_value]
+      [:transport_mode, :transport_submode_name, :published_journey_name, :vehicle_type_identifier, :published_journey_identifier, :comment, :status_value, :service_alteration]
     end
 
     belongs_to :company
     belongs_to :route
     belongs_to :journey_pattern
 
+    has_many :vehicle_journeys_key_values
     has_and_belongs_to_many :footnotes, :class_name => 'Chouette::Footnote', :foreign_key => "vehicle_journey_id", :association_foreign_key => "footnote_id"
 
     validates_presence_of :route
@@ -82,6 +83,21 @@ module Chouette
       end
     end
 
+    def service_alteration_name
+      # return nil if service_alteration is nil
+      service_alteration && Chouette::ServiceAlteration.new( service_alteration.underscore)
+    end
+
+    def service_alteration_name=(service_alteration_name)
+      self.service_alteration = (service_alteration_name ? service_alteration_name.camelcase : nil)
+    end
+
+    @@service_alterations = nil
+    def self.service_alterations
+      @@service_alterations ||= Chouette::ServiceAlteration.all.select do |service_alteration|
+        service_alteration.to_i > -1
+      end
+    end
 
     def increasing_times
       previous = nil

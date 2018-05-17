@@ -60,6 +60,10 @@
     </p>
 
     <p>
+      <label><%= vehicle_journey.human_attribute_name("service_alteration") %>: </label>
+      <%= vehicle_journey.service_alteration %>
+    </p>
+    <p>
       <label><%= vehicle_journey.human_attribute_name("mobility_restricted_suitability") %>: </label>
       <% if vehicle_journey.mobility_restricted_suitability.nil? %>
         <%= vehicle_journey.human_attribute_name("unspecified_mrs") %>
@@ -96,6 +100,16 @@
       <label><%= vehicle_journey.human_attribute_name("vehicle_type_identifier") %>: </label>
       <%= vehicle_journey.vehicle_type_identifier %>
     </p>
+    <p>
+      <label><%=vehicle_journey.human_attribute_name(:key_values) %>: </label>
+    </p>
+      <% unless vehicle_journey.vehicle_journeys_key_values.nil? %>
+        <ul>
+          <% vehicle_journey.vehicle_journeys_key_values.each do |key_value| %>
+              <li><%= key_value.key %> - <%= key_value.value %></li>
+          <% end %>
+        </ul>
+    <% end %>
     <p>
       <label><%= vehicle_journey.human_attribute_name("footnote_ids") %>: </label>
     <ul>
