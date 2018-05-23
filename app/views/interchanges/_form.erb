@@ -1,14 +1,14 @@
 <div class="interchange-filter">
     <% $lines = Chouette::Line.all %>
     <div>
-        <label for="line_filter_feeder">Feeder ServiceJourney filter by line</label>
+        <label for="line_filter_feeder">Filtre par ligne en provenance de</label>
         <select id="line_filter_feeder">
           <option value="*">All</option>
           <%= options_from_collection_for_select($lines, 'id', 'name')  %>
         </select>
     </div>
     <div>
-        <label for="line_filter_consumer">Consumer ServiceJourney filter by line</label>
+        <label for="line_filter_consumer">Filtre par ligne à destination de</label>
         <select id="line_filter_consumer">
           <option value="*">All</option>
           <%= options_from_collection_for_select($lines, 'id', 'name')  %>
