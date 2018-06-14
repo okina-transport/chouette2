@@ -1,6 +1,6 @@
 GIT
-  remote: https://github.com/rutebanken/chouette-projects-i18n.git
-  revision: 2dd139efd56822392f61e25abda67575b169b06b
+  remote: https://github.com/okina-transport/chouette-projects-i18n.git
+  revision: 3ac626731092e8c24c15a61af99e1e0ca55bf7f0
   branch: master
   specs:
     chouette-projects-i18n (0.1.0)
@@ -8,8 +8,8 @@ GIT
       railties
 
 GIT
-  remote: https://github.com/rutebanken/chouette2-i18n.git
-  revision: ad38ab144d2565979aca6b6cb60c3b96f6db6171
+  remote: https://github.com/okina-transport/chouette2-i18n.git
+  revision: 09c8441f5b40831525e70ea0f62173554c708780
   branch: master
   specs:
     chouette2-i18n (0.1.0)
