@@ -13,12 +13,16 @@ class Chouette::Line < Chouette::TridentActiveRecord
   has_and_belongs_to_many :group_of_lines, :class_name => 'Chouette::GroupOfLine', :order => 'group_of_lines.name'
 
   has_many :lines_key_values
-#  has_many :footnotes, :inverse_of => :line, :validate => :true, :dependent => :destroy
-#  accepts_nested_attributes_for :footnotes, :reject_if => :all_blank, :allow_destroy => true
+
+  #  has_many :footnotes, :inverse_of => :line, :validate => :true, :dependent => :destroy
+  #  accepts_nested_attributes_for :footnotes, :reject_if => :all_blank, :allow_destroy => true
 
   attr_reader :group_of_line_tokens, :footnote_tokens
   attr_accessor :transport_mode
   attr_accessor :transport_submode
+
+  belongs_to :booking_arrangement, :class_name => 'Chouette::BookingArrangement', :dependent => :destroy
+  accepts_nested_attributes_for :booking_arrangement, :allow_destroy => :true
 
   validates_presence_of :network
   validates_presence_of :company
@@ -41,7 +45,7 @@ class Chouette::Line < Chouette::TridentActiveRecord
 
   def transport_mode
     # return nil if transport_mode_name is nil
-    transport_mode_name && Chouette::TransportMode.new( transport_mode_name.underscore)
+    transport_mode_name && Chouette::TransportMode.new(transport_mode_name.underscore)
   end
 
   def transport_mode=(transport_mode)
@@ -50,14 +54,17 @@ class Chouette::Line < Chouette::TridentActiveRecord
 
   def transport_submode
     # return nil if transport_submode_name is nil
-    transport_submode_name && Chouette::TransportSubMode.new( transport_submode_name.underscore)
+    transport_submode_name && Chouette::TransportSubMode.new(transport_submode_name.underscore)
   end
 
   def transport_submode=(transport_submode)
     self.transport_submode_name = (transport_submode ? transport_submode.camelcase : nil)
   end
 
+
+
   @@transport_modes = nil
+
   def self.transport_modes
     @@transport_modes ||= Chouette::TransportMode.all.select do |transport_mode|
       transport_mode.to_i > -1
@@ -65,14 +72,23 @@ class Chouette::Line < Chouette::TridentActiveRecord
   end
 
   @@transport_submodes = nil
+
   def self.transport_submodes
     @@transport_submodes ||= Chouette::TransportSubMode.all.select do |transport_submode|
       transport_submode.to_i > -1
     end
   end
 
+  @flexible_line_types = nil
+
+  def self.flexible_line_types
+    @flexible_line_types ||= Chouette::FlexibleLineType.all.select do |flexible_line_type|
+      flexible_line_type.to_i > -1
+    end
+  end
+
   def commercial_stop_areas
-    Chouette::StopArea.joins(:children => [:stop_points => [:route => :line] ]).where(:lines => {:id => self.id}).uniq
+    Chouette::StopArea.joins(:children => [:stop_points => [:route => :line]]).where(:lines => {:id => self.id}).uniq
   end
 
   def stop_areas
@@ -94,7 +110,6 @@ class Chouette::Line < Chouette::TridentActiveRecord
   def footnote_tokens=(ids)
     self.footnote_ids = ids.split(",")
   end
-
 
 
 end

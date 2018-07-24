@@ -1,51 +1,51 @@
 <%= semantic_form_for ["save_stop_points", @referential, @line, @route], :method => :PUT do |form| %>
   <%= form.inputs do %>
   <% end %>
-    <div id="stop_points">
-      <%= form.semantic_fields_for :stop_points, :include_id => false do |p| %>
-          <%= render "stop_point_fields",  :f => p %>
-      <% end %>
-      <div class="links">
-        <%= link_to_add_association t("routes.actions.add_stop_point"), form, :stop_points, :class => 'add_stop_point add' %>
-      </div>
+  <div id="stop_points">
+    <%= form.semantic_fields_for :stop_points, :include_id => false do |p| %>
+      <%= render "stop_point_fields", :f => p %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association t("routes.actions.add_stop_point"), form, :stop_points, :class => 'add_stop_point add' %>
     </div>
+  </div>
 
-   <%= form.actions do %>
-     <%= form.action :submit, :as => :button %>
-     <%= form.action :cancel, :as => :link %>
-   <% end %>
+  <%= form.actions do %>
+    <%= form.action :submit, :as => :button %>
+    <%= form.action :cancel, :as => :link %>
+  <% end %>
 <% end %>
 <script>
 
-$(document).ready( function() {
-  var stop_point_ids = [];
+  $(document).ready(function () {
+    var stop_point_ids = [];
 
-  var order_position = function() {
-    $('#stop_points input[type="hidden"][id$="position"]').each(function(index) {
-      $(this).val(index);
-    });
-  };
+    var order_position = function () {
+      $('#stop_points input[type="hidden"][id$="position"]').each(function (index) {
+        $(this).val(index);
+      });
+    };
 
-  var write_stop_point_ids = function(){
-    $('#stop_points input[type="hidden"][class~="stop_point_id"]').each(function(index,element) {
-      // soit le parent a la classe added_stop_point
-        if ( $(element).hasClass("added_stop_point") ){
+    var write_stop_point_ids = function () {
+      $('#stop_points input[type="hidden"][class~="stop_point_id"]').each(function (index, element) {
+        // soit le parent a la classe added_stop_point
+        if ($(element).hasClass("added_stop_point")) {
           $(this).attr("value", "");
         } else {
           $(this).attr("value", stop_point_ids.shift());
         }
-    });
-  }
+      });
+    }
 
-  var empty_stop_point_ids = function() {
-    stop_point_ids = $.map($('#stop_points input[type="hidden"][class="stop_point_id"]'), function(element, index) {
-      return $(element).val();
-    });
-    // console.log(  "before-remove");
-    // console.log(  stop_point_ids);
-  };
+    var empty_stop_point_ids = function () {
+      stop_point_ids = $.map($('#stop_points input[type="hidden"][class="stop_point_id"]'), function (element, index) {
+        return $(element).val();
+      });
+      // console.log(  "before-remove");
+      // console.log(  stop_point_ids);
+    };
 
-  $('#stop_points').sortable({
+    $('#stop_points').sortable({
       axis: 'y',
       dropOnEmpty: false,
       handle: '.handle',
@@ -53,40 +53,45 @@ $(document).ready( function() {
       items: '.stop_point',
       opacity: 0.4,
       scroll: true,
-      start: function( event, ui ) {
+      start: function (event, ui) {
         empty_stop_point_ids();
       },
-      update: function( event, ui ) {
+      update: function (event, ui) {
         write_stop_point_ids();
         order_position();
       }
-  });
-
-  $('#stop_points').bind("cocoon:after-insert", function(event, insertedItem) {
-
-    var new_stop_count = $('div.nested-fields.stop_point').size();
-    // cocoonId seem to be generated automatically (by jQuery?) and is replaced with index in route.stop_points array
-      var cocoonId = insertedItem.find("input.new_stop_point").attr("id").match( /route_stop_points_attributes_(\d+)_scheduled_stop_point_id_or_stop_area_objectid_key/)[1];
-      insertedItem.find('input').each( function(index,e){
-      var old = $(e).attr("name");
-      if (old!=undefined) {
-        $(e).attr("name", old.replace( cocoonId, new_stop_count - 1));
-      }
     });
 
-    //console.log( "cocoonId="+cocoonId+", new_stop_count="+new_stop_count);
-    order_position();
-  });
+    $('#stop_points').bind("cocoon:after-insert", function (event, insertedItem) {
 
-  $('#stop_points').on("cocoon:before-remove", empty_stop_point_ids);
+      var new_stop_count = $('div.nested-fields.stop_point').size();
+      // cocoonId seem to be generated automatically (by jQuery?) and is replaced with index in route.stop_points array
+      var cocoonId = insertedItem.find("input.new_stop_point").attr("id").match(/route_stop_points_attributes_(\d+)_scheduled_stop_point_id_or_stop_area_objectid_key/)[1];
+      insertedItem.find('input').each(function (index, e) {
+        var old = $(e).attr("name");
+        if (old != undefined) {
+          $(e).attr("name", old.replace(cocoonId, new_stop_count - 1));
+        }
+      });
 
-  $('#stop_points').on("cocoon:after-remove", function() {
-    write_stop_point_ids();
-    order_position();
-  });
-});
+      //console.log( "cocoonId="+cocoonId+", new_stop_count="+new_stop_count);
+      order_position();
+    });
+
+    $('#stop_points').on("cocoon:before-remove", empty_stop_point_ids);
+
+    $('#stop_points').on("cocoon:after-remove", function () {
+      write_stop_point_ids();
+      order_position();
+    });
 
 
+    $('form').submit(function () {
+      if ($('form .stop_point .inputs .token-input-token span img')[0] !== undefined)
+        return;
+      else event.preventDefault();
+    });
+  })
 
 
 </script>

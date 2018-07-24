@@ -8,10 +8,24 @@
     <%= form.input :private_code %>
     <%= form.input :comment %>
     <%= form.input :transport_mode_name, :as => :select, :collection => Chouette::Line.transport_modes, :include_blank => true, :member_label => Proc.new { |mode| t("transport_modes.label.#{mode}") }  %>
-    <%= form.input :transport_submode, :as => :select, :collection => Chouette::Line.transport_submodes, :include_blank => true, :member_label => Proc.new { |mode| t("transport_sub_modes.label.#{mode}") }  %>
-    <%= form.input :mobility_restricted_suitability, :as => :select, :collection => [[vehicle_journey.human_attribute_name("accessible"), true], [vehicle_journey.human_attribute_name("not_accessible"), false]], :include_blank => true %>
-    <%= form.input :service_alteration_name, :as => :select, :collection => Chouette::VehicleJourney.service_alterations, :include_blank => true, :member_label => Proc.new { |mode| t("service_alterations.label.#{mode}") }  %>
-    <%= form.input :flexible_service, :as => :select, :collection => [[vehicle_journey.human_attribute_name("on_demand_fs"), true], [vehicle_journey.human_attribute_name("regular_fs"), false]], :include_blank => true %>
+    <%= form.input :transport_submode, :as => :select, :collection => Chouette::Line.transport_submodes, :include_blank => true, :member_label => Proc.new { |mode| t("transport_submodes.label.#{mode}") }  %>
+        <%= form.input :mobility_restricted_suitability, :as => :select, :collection => [[vehicle_journey.human_attribute_name("accessible"), true], [vehicle_journey.human_attribute_name("not_accessible"), false]], :include_blank => true %>
+        <%= form.input :service_alteration_name, :as => :select, :collection => Chouette::VehicleJourney.service_alterations, :include_blank => true, :member_label => Proc.new {|mode| t("service_alterations.label.#{mode}")} %>
+        <%= form.input :flexible_service, :as => :select, :collection => [[vehicle_journey.human_attribute_name("on_demand_fs"), true], [vehicle_journey.human_attribute_name("regular_fs"), false]], :include_blank => true %>
+        <div class="flexible_service_details">
+          <% unless form.object.flexible_service_properties.nil? %>
+              <%= form.semantic_fields_for :flexible_service_properties, form.object.flexible_service_properties do |f| %>
+              <%= render "flexible_service_property_fields", :f => f %>
+                  <% end %>
+          <% else %>
+              <div class="links">
+                <%= link_to_add_association t("vehicle_journeys.actions.add_flexible_service_properties"), form, :flexible_service_properties, :class => 'add_flexible_service_properties add' %>
+              </div>
+          <% end %>
+
+
+        </div>
+
     <%= form.input :status_value %>
     <%= form.input :facility %>
     <%= form.input :vehicle_type_identifier%>
