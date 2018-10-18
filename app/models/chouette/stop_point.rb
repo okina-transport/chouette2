@@ -94,12 +94,6 @@ module Chouette
       end
     end
 
-    def object_id
-      if (scheduled_stop_point)
-        scheduled_stop_point.objectid
-      end
-    end
-
   end
 
 end
