@@ -15,10 +15,10 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
               return result;
            };
 
-           var item_object_id = function(item){
+           var item_id = function(item){
               var result='';
-              if(item.stop_point_object_id){
-                  result = item.stop_point_object_id;
+              if(item.id){
+                  result = item.id;
               }
 
               return result;
@@ -35,12 +35,12 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
                 name += ' <small>[' + item.name + ']</small>';
               }
 
-              var object_id=item_object_id(item);
-              if (item.stop_point_object_id){
-                object_id += ' <small>[' + item.stop_point_object_id + ']</small>';
+              var item_id=item_id(item);
+              if (item.id){
+                item_id += ' <small>[' + item.id + ']</small>';
               }
 
-              return item_format(item, name, object_id);
+              return item_format(item, name, item_id);
           };
 
           var token_format = function(item) {
@@ -48,7 +48,7 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
               return item_format(item, name);
           };
 
-           var item_format = function( item, name, object_id ){
+           var item_format = function( item, name, item_id ){
               if (item && item.id) {
                 var localization = item_localization( item );
 
@@ -59,9 +59,9 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
                   html_result += '<span style=\"height:25px; line-height:25px; margin-left: 5px; \">' + name + '</span>' ;
                 }
 
-                if(object_id != '')
+                if(item.id != '')
                 {
-                  html_result += '<span style=\"height:25px; line-height:25px; margin-left: 5px; \">' + object_id + '</span>' ;
+                  html_result += '<span style=\"height:25px; line-height:25px; margin-left: 5px; \">' + item.id + '</span>' ;
                 }
 
                 if(localization != '')
