@@ -15,13 +15,10 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
               return result;
            };
 
-           var item_id = function(item){
+           var stop_point_object_id = function(item){
               var result='';
-              if(item.id){
-                  var itemObjectId = item.id;
-                  var itemObjectIdIndex = itemObjectId.indexOf(',')
-                  var itemObjectId = itemObjectId.slice(itemObjectIdIndex+1);
-                  result = itemObjectId;
+              if(item.stop_point_object_id){
+                  result = item.stop_point_object_id;
               }
 
               return result;
@@ -38,21 +35,21 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
                 name += ' <small>[' + item.name + ']</small>';
               }
 
-              var item_id=item_id(item);
-              if (item.id){
-                item_id += ' <small>[' + item.id + ']</small>';
+              var stop_point_object_id=stop_point_object_id(item);
+              if (item.stop_point_object_id){
+                item_id += ' <small>[' + item.stop_point_object_id + ']</small>';
               }
 
-              return item_format(item, name, item_id);
+              return item_format(item, name, stop_point_object_id);
           };
 
           var token_format = function(item) {
               var name=item_name(item);
-              var item_id = '';
-              return item_format(item, name, item_id);
+              var stop_point_object_id = stop_point_object_id(item);
+              return item_format(item, name, stop_point_object_id);
           };
 
-           var item_format = function( item, name, item_id ){
+           var item_format = function( item, name, stop_point_object_id ){
               if (item && item.id) {
                 var localization = item_localization( item );
 
@@ -63,9 +60,9 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
                   html_result += '<span style=\"height:25px; line-height:25px; margin-left: 5px; \">' + name + '</span>' ;
                 }
 
-                if(item_id != '')
+                if(stop_point_object_id != '')
                 {
-                  html_result += '<span style=\"height:25px; line-height:25px; margin-left: 5px; \">' + item_id + '</span>' ;
+                  html_result += '<span style=\"height:25px; line-height:25px; margin-left: 5px; \">' + stop_point_object_id + '</span>' ;
                 }
 
                 if(localization != '')
