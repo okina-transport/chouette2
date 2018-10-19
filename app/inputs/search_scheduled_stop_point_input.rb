@@ -18,9 +18,10 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
            var item_id = function(item){
               var result='';
               if(item.id){
-                  var itemIndex = item.id.indexOf(',');
-                  var itemId = item.id.slice(itemIndex+1);
-                  result = itemId;
+                  var itemObjectId = item.id;
+                  var itemObjectIdIndex = itemObjectId.indexOf(',')
+                  var itemObjectId = itemObjectId.slice(itemObjectIdIndex+1);
+                  result = itemObjectId;
               }
 
               return result;
@@ -62,9 +63,9 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
                   html_result += '<span style=\"height:25px; line-height:25px; margin-left: 5px; \">' + name + '</span>' ;
                 }
 
-                if(item.id != '')
+                if(item_id != '')
                 {
-                  html_result += '<span style=\"height:25px; line-height:25px; margin-left: 5px; \">' + item.id + '</span>' ;
+                  html_result += '<span style=\"height:25px; line-height:25px; margin-left: 5px; \">' + item_id + '</span>' ;
                 }
 
                 if(localization != '')
