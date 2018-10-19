@@ -37,7 +37,7 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
 
               var stop_point_object_id = item_stop_point_object_id(item);
               if (item.stop_point_object_id){
-                item_id += ' <small>[' + item.stop_point_object_id + ']</small>';
+                stop_point_object_id += ' <small>[' + item.stop_point_object_id + ']</small>';
               }
 
               return item_format(item, name, stop_point_object_id);
