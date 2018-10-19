@@ -62,6 +62,7 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
                 if(object_id != '')
                 {
                   html_result += '<span style=\"height:25px; line-height:25px; margin-left: 5px; \">' + object_id + '</span>' ;
+                }
 
                 if(localization != '')
                 {
