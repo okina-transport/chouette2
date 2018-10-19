@@ -7,10 +7,8 @@ module StopAreasHelper
     
     localization += stop_area.zip_code || ""
     localization += ( stop_area.city_name ) if stop_area.city_name
-
-    objectid += ( stop_area.objectid ) if stop_area.objectid
     
-    ( "<img src='#{stop_area_picture_url(stop_area)}'/>" + " <span style='height:25px; line-height:25px; margin-left: 5px; '>" + name + " " + "NAQ:Quay:" + objectid + " <small style='height:25px; line-height:25px; margin-left: 10px; color: #555;'>" + localization + "</small></span>").html_safe
+    ( "<img src='#{stop_area_picture_url(stop_area)}'/>" + " <span style='height:25px; line-height:25px; margin-left: 5px; '>" + name + " <small style='height:25px; line-height:25px; margin-left: 10px; color: #555;'>" + localization + "</small></span>").html_safe
   end
   
   def genealogical_title

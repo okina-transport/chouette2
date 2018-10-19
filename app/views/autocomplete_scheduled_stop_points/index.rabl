@@ -7,7 +7,8 @@ node do |scheduled_stop_point|
   :stop_point_cnt => scheduled_stop_point.stop_points.size,
   :stop_area_name => scheduled_stop_point.stop_area ?  truncate(scheduled_stop_point.stop_area.name, :length => 30) || "" : "",
   :stop_area_zip_code => scheduled_stop_point.stop_area != nil ? scheduled_stop_point.stop_area.zip_code || "" : "",
-  :stop_area_short_city_name =>  scheduled_stop_point.stop_area != nil ? truncate(scheduled_stop_point.stop_area.city_name, :length => 15) || "" : ""
+  :stop_area_short_city_name =>  scheduled_stop_point.stop_area != nil ? truncate(scheduled_stop_point.stop_area.city_name, :length => 15) || "" : "",
+  :stop_point_object_id => scheduled_stop_point.id
   }
 end
 

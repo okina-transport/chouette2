@@ -15,6 +15,15 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
               return result;
            };
 
+           var item_object_id = function(item){
+              var result='';
+              if(item.stop_point_object_id){
+                  result = item.stop_point_object_id;
+              }
+
+              return result;
+            };
+
            var item_localization = function( item){
               var localization = item.stop_area_zip_code + ' ' + item.stop_area_short_city_name;
               return localization;
@@ -25,14 +34,21 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
                if (item.name){
                 name += ' <small>[' + item.name + ']</small>';
               }
-              return item_format(item, name);
+
+              var object_id=item_object_id(item);
+              if (item.stop_point_object_id){
+                object_id += ' <small>[' + item.stop_point_object_id + ']</small>';
+              }
+
+              return item_format(item, name, object_id);
           };
+
           var token_format = function(item) {
               var name=item_name(item);
               return item_format(item, name);
           };
 
-           var item_format = function( item, name ){
+           var item_format = function( item, name, object_id ){
               if (item && item.id) {
                 var localization = item_localization( item );
 
@@ -42,6 +58,11 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
                 {
                   html_result += '<span style=\"height:25px; line-height:25px; margin-left: 5px; \">' + name + '</span>' ;
                 }
+
+                if(object_id != '')
+                {
+                  html_result += '<span style=\"height:25px; line-height:25px; margin-left: 5px; \">' + object_id + '</span>' ;
+
                 if(localization != '')
                 {
                   html_result += '<small style=\"height:25px; line-height:25px; margin-left: 10px; color: #555; \">' + localization + '</small>';
