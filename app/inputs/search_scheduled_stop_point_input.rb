@@ -18,7 +18,9 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
            var item_id = function(item){
               var result='';
               if(item.id){
-                  result = item.id;
+                  var itemIndex = item.id.indexOf(',');
+                  var itemId = item.id.slice(itemIndex+1);
+                  result = itemId;
               }
 
               return result;
@@ -45,7 +47,8 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
 
           var token_format = function(item) {
               var name=item_name(item);
-              return item_format(item, name);
+              var item_id=item_id(item);
+              return item_format(item, name, item_id);
           };
 
            var item_format = function( item, name, item_id ){
