@@ -48,7 +48,7 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
 
           var token_format = function(item) {
               var name=item_name(item);
-              var item_id=item_id(item);
+              var item_id = '';
               return item_format(item, name, item_id);
           };
 
