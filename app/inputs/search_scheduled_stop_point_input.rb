@@ -15,7 +15,7 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
               return result;
            };
 
-           var stop_point_object_id = function(item){
+           var item_stop_point_object_id = function(item){
               var result='';
               if(item.stop_point_object_id){
                   result = item.stop_point_object_id;
@@ -35,7 +35,7 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
                 name += ' <small>[' + item.name + ']</small>';
               }
 
-              var stop_point_object_id=stop_point_object_id(item);
+              var stop_point_object_id = item_stop_point_object_id(item);
               if (item.stop_point_object_id){
                 item_id += ' <small>[' + item.stop_point_object_id + ']</small>';
               }
@@ -45,7 +45,7 @@ class SearchScheduledStopPointInput < Formtastic::Inputs::SearchInput
 
           var token_format = function(item) {
               var name=item_name(item);
-              var stop_point_object_id = stop_point_object_id(item);
+              var stop_point_object_id = item_stop_point_object_id(item);
               return item_format(item, name, stop_point_object_id);
           };
 
