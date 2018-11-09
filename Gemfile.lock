@@ -1,22 +1,4 @@
 GIT
-  remote: https://github.com/okina-transport/chouette-projects-i18n.git
-  revision: 3ac626731092e8c24c15a61af99e1e0ca55bf7f0
-  branch: master
-  specs:
-    chouette-projects-i18n (0.1.0)
-      i18n
-      railties
-
-GIT
-  remote: https://github.com/okina-transport/chouette2-i18n.git
-  revision: 09c8441f5b40831525e70ea0f62173554c708780
-  branch: master
-  specs:
-    chouette2-i18n (0.1.0)
-      i18n
-      railties
-
-GIT
   remote: https://github.com/entur/ievkit.git
   revision: 00d8fe01402704d79cdf649c4736e3207875a5d3
   branch: master
@@ -43,6 +25,24 @@ GIT
   specs:
     language_engine (0.0.6)
       rails (>= 4.1.1)
+
+GIT
+  remote: https://github.com/okina-transport/chouette-projects-i18n.git
+  revision: 3ac626731092e8c24c15a61af99e1e0ca55bf7f0
+  branch: master
+  specs:
+    chouette-projects-i18n (0.1.0)
+      i18n
+      railties
+
+GIT
+  remote: https://github.com/okina-transport/chouette2-i18n.git
+  revision: 09c8441f5b40831525e70ea0f62173554c708780
+  branch: master
+  specs:
+    chouette2-i18n (0.1.0)
+      i18n
+      railties
 
 GEM
   remote: https://rubygems.org/
