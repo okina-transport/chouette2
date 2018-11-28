@@ -70,7 +70,7 @@ gem 'georuby', '2.3.0' # Fix version for georuby-ext because api has changed
 gem 'mimemagic'
 
 # User interface
-gem 'language_engine', git: 'https://github.com/rutebanken/language_engine'
+gem 'language_engine', git: 'https://github.com/entur/language_engine'
 gem 'calendar_helper', '0.2.5'
 gem 'cocoon'
 gem 'formtastic', '2.3.1'
@@ -158,8 +158,8 @@ end
 
 
 # IEVKIT
-gem 'ievkit',  git: 'https://github.com/rutebanken/ievkit.git', branch: 'master' #'~> 0.3.0'
-gem 'ievkit_views', git: 'https://github.com/rutebanken/ievkit_views.git', branch: 'master' #'~> 0.2.2'
+gem 'ievkit',  git: 'https://github.com/entur/ievkit.git', branch: 'master' #'~> 0.3.0'
+gem 'ievkit_views', git: 'https://github.com/entur/ievkit_views.git', branch: 'master' #'~> 0.2.2'
 
 # I18n
 gem 'rails-i18n', '~> 4.0.0'

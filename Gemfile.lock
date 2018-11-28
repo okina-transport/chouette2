@@ -1,4 +1,32 @@
 GIT
+  remote: https://github.com/entur/ievkit.git
+  revision: 00d8fe01402704d79cdf649c4736e3207875a5d3
+  branch: master
+  specs:
+    ievkit (0.3.0)
+      faraday_middleware (~> 0.11.0.1)
+      figaro (~> 1.1.1)
+      redis (~> 3.2)
+      rest-client (~> 1.8.0)
+
+GIT
+  remote: https://github.com/entur/ievkit_views.git
+  revision: e80fef11b5fa9bc9d532e7136b42a9bf4e07d318
+  branch: master
+  specs:
+    ievkit_views (0.2.2)
+      kaminari (~> 0.16.3)
+      kaminari-i18n (~> 0.3.2)
+      rails (~> 4.2.6)
+
+GIT
+  remote: https://github.com/entur/language_engine
+  revision: ad3c02ab8fb29ab78d90cc5036b4871b1fecda02
+  specs:
+    language_engine (0.0.6)
+      rails (>= 4.1.1)
+
+GIT
   remote: https://github.com/okina-transport/chouette-projects-i18n.git
   revision: 3ac626731092e8c24c15a61af99e1e0ca55bf7f0
   branch: master
@@ -15,34 +43,6 @@ GIT
     chouette2-i18n (0.1.0)
       i18n
       railties
-
-GIT
-  remote: https://github.com/rutebanken/ievkit.git
-  revision: 00d8fe01402704d79cdf649c4736e3207875a5d3
-  branch: master
-  specs:
-    ievkit (0.3.0)
-      faraday_middleware (~> 0.11.0.1)
-      figaro (~> 1.1.1)
-      redis (~> 3.2)
-      rest-client (~> 1.8.0)
-
-GIT
-  remote: https://github.com/rutebanken/ievkit_views.git
-  revision: e80fef11b5fa9bc9d532e7136b42a9bf4e07d318
-  branch: master
-  specs:
-    ievkit_views (0.2.2)
-      kaminari (~> 0.16.3)
-      kaminari-i18n (~> 0.3.2)
-      rails (~> 4.2.6)
-
-GIT
-  remote: https://github.com/rutebanken/language_engine
-  revision: ad3c02ab8fb29ab78d90cc5036b4871b1fecda02
-  specs:
-    language_engine (0.0.6)
-      rails (>= 4.1.1)
 
 GEM
   remote: https://rubygems.org/
