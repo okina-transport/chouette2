@@ -95,7 +95,10 @@
             <div id="flexible_service" class="col-md-6">
           <p>
             <label><%= @line.human_attribute_name("flexible_line_type") %>: </label>
-            <%= @line.flexible_line_type %>
+            <% if @line.flexible_line_type.nil? %>
+            <% else %>
+            <%= t("flexible_line_types.label.#{@line.flexible_line_type}") %>
+            <% end %>
           </p>
 
           <% @booking_arrangement=@line.booking_arrangement %>

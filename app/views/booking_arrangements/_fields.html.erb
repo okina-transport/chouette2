@@ -3,13 +3,13 @@
   <%= link_to_remove_association "<i class='fa fa-trash-o'></i>".html_safe, f %>
 
   <%= f.input :id, :as  => :hidden %>
-  <%= f.input :booking_access, :as => :select, :collection => Chouette::BookingArrangement.booking_access_types, :include_blank => true %>
-  <%= f.input :book_when, :as => :select, :collection => Chouette::BookingArrangement.purchase_when_types, :include_blank => true %>
-  <%= f.input :buy_when, :as => :check_boxes, :collection => Chouette::BookingArrangement.purchase_moment_types, :include_blank => false %>
-  <%= f.input :booking_methods, :as => :check_boxes, :collection => Chouette::BookingArrangement.booking_method_types, :include_blank => false %>
-  <%= f.input :latest_booking_time, :as => :time_picker %>
-  <%= f.input :minimum_booking_period, :as => :time_picker %>
-  <%= f.input :booking_note, :as => :text %>
+  <%= f.input :booking_access, :label => t(@line.human_attribute_name("booking_access")), :as => :select, :collection => Chouette::BookingArrangement.booking_access_types, :include_blank => true, :member_label => Proc.new {|mode| t("booking_access_types.label.#{mode}")} %>
+  <%= f.input :book_when, :label => t(@line.human_attribute_name("book_when")), :as => :select, :collection => Chouette::BookingArrangement.purchase_when_types, :include_blank => true, :member_label => Proc.new {|mode| t("purchase_when_types.label.#{mode}")} %>
+  <%= f.input :buy_when, :label => t(@line.human_attribute_name("buy_when")), :as => :check_boxes, :collection => Chouette::BookingArrangement.purchase_moment_types, :include_blank => false, :member_label => Proc.new {|mode| t("purchase_moment_types.label.#{mode}")} %>
+  <%= f.input :booking_methods, :label => t(@line.human_attribute_name("booking_methods")), :as => :check_boxes, :collection => Chouette::BookingArrangement.booking_method_types, :include_blank => false, :member_label => Proc.new {|mode| t("booking_method_types.label.#{mode}")} %>
+  <%= f.input :latest_booking_time, :label => t(@line.human_attribute_name("latest_booking_time")), :as => :time_picker %>
+  <%= f.input :minimum_booking_period, :label => t(@line.human_attribute_name("minimum_booking_period")), :as => :time_picker %>
+  <%= f.input :booking_note, :label => t(@line.human_attribute_name("booking_note")), :as => :text %>
 
   <legend class="label">
     <label><%= @line.human_attribute_name("booking_contact") %>: </label>
@@ -17,12 +17,12 @@
   <p>
     <% f.object.build_booking_contact unless f.object.booking_contact %>
     <%= f.fields_for :booking_contact, f.object.booking_contact do |bc| %>
-        <%= bc.input :contact_person %>
-        <%= bc.input :phone, :as => :phone %>
-        <%= bc.input :url, :as => :url %>
-        <%= bc.input :email, :as => :email %>
-        <%= bc.input :fax, :as => :phone %>
-        <%= bc.input :further_details %>
+        <%= bc.input :contact_person, :label => t(@line.human_attribute_name("contact_person")) %>
+        <%= bc.input :phone, :label => t(@line.human_attribute_name("phone")), :as => :phone %>
+        <%= bc.input :url, :label => t(@line.human_attribute_name("url")), :as => :url %>
+        <%= bc.input :email, :label => t(@line.human_attribute_name("email")), :as => :email %>
+        <%= bc.input :fax, :label => t(@line.human_attribute_name("fax")), :as => :phone %>
+        <%= bc.input :further_details, :label => t(@line.human_attribute_name("further_detail")) %>
     <% end %>
   </p>
 </div>

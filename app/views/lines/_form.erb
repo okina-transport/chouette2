@@ -25,7 +25,7 @@
       <div class="flexible_service_details">
 
         <p>
-          <%= form.input :flexible_line_type, :as => :select, :collection => Chouette::Line.flexible_line_types, :include_blank => false %>
+          <%= form.input :flexible_line_type, :as => :select, :collection => Chouette::Line.flexible_line_types, :include_blank => false, :member_label => Proc.new {|mode| t("flexible_line_types.label.#{mode}")} %>
           <% form.object.build_booking_arrangement unless form.object.booking_arrangement %>
         </p>
         <%= render "booking_arrangements/form", :form => form %>
