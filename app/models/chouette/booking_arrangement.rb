@@ -53,4 +53,20 @@ class Chouette::BookingArrangement < Chouette::ActiveRecord
     end
   end
 
+  def booking_access=(value)
+    if value.empty?
+      write_attribute(:booking_access, nil)
+    else
+      super
+    end
+  end
+
+  def book_when=(value)
+    if value.empty?
+      write_attribute(:book_when, nil)
+    else
+      super
+    end
+  end
+
 end

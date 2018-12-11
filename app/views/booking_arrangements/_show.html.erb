@@ -2,11 +2,15 @@
   <div id="index_item" class="panel panel-default">
     <p>
       <label><%= @line.human_attribute_name("booking_access") %>: </label>
-      <%= t("booking_access_types.label.#{@booking_arrangement.booking_access}") %>
+      <% unless @booking_arrangement.booking_access.nil? %>
+          <%= t("booking_access_types.label.#{@booking_arrangement.booking_access}") %>
+      <% end %>
     </p>
     <p>
       <label><%= @line.human_attribute_name("book_when") %>: </label>
-      <%= t("purchase_when_types.label.#{@booking_arrangement.book_when}") %>
+      <% unless @booking_arrangement.book_when.nil? %>
+          <%= t("purchase_when_types.label.#{@booking_arrangement.book_when}") %>
+      <% end %>
     </p>
     <p>
       <label><%= @line.human_attribute_name("buy_when") %>: </label>
