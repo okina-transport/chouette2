@@ -7,7 +7,7 @@
         <%= f.input :objectid, :label => t('flexible_service_properties_objectid') %>
       </p>
       <p>
-        <%= f.input :flexible_service_type, :as => :select, :collection => Chouette::VehicleJourney.flexible_service_types, :include_blank => true, :member_label => Proc.new {|mode| t("flexible_service_types.label.#{mode}")} %>
+        <%= f.input :flexible_service_type, :label => t("flexible_service_type"), :as => :select, :collection => Chouette::VehicleJourney.flexible_service_types, :include_blank => true, :member_label => Proc.new {|mode| t("flexible_service_types.label.#{mode}")} %>
       </p>
       <p>
         <%= f.input :cancellation_possible, t("flexible_properties_cancellation_possible") %>
