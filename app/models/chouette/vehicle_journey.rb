@@ -189,12 +189,5 @@ module Chouette
         vjas.save
       end
     end
-
-    @flexible_service_type = nil
-    def self.flexible_service_type
-      @flexible_service_type ||= Chouette::FlexibleServiceType.all.select do |flexible_service_type|
-        flexible_service_type.to_i > -1
-      end
-    end
   end
 end
