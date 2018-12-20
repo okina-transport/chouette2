@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: https://github.com/okina-transport/chouette2-i18n.git
-  revision: 89600d51000e39502d74a439c9161342bc846b49
+  revision: 8df23ac573b8e63475bc34d5bedeca9783e7b5c3
   branch: master
   specs:
     chouette2-i18n (0.1.0)
