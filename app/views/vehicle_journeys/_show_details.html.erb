@@ -93,7 +93,7 @@
             </p>
             <p>
               <label><%= vehicle_journey.human_attribute_name("flexible_service_type") %>: </label>
-              <% if vehicle_journey.flexible_service_properties.flexible_service_type.nil? %>
+              <% if vehicle_journey.flexible_service_properties.flexible_service_type.empty? %>
               <% else %>
                 <%= t("flexible_service_types.label.#{@vehicle_journey.flexible_service_properties.flexible_service_type}") %>
               <% end %>

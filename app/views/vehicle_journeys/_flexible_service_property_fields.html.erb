@@ -10,10 +10,10 @@
         <%= f.input :flexible_service_type, :label => t('flexible_service_type'), :as => :select, :collection => Chouette::VehicleJourney.flexible_service_types, :include_blank => true %>
       </p>
       <p>
-        <%= f.input :cancellation_possible, label: vehicle_journey.human_attribute_name("cancellation_possible") %>
+        <%= f.input :cancellation_possible, label: @vehicle_journey.human_attribute_name("cancellation_possible") %>
       </p>
       <p>
-        <%= f.input :change_of_time_possible, label: vehicle_journey.human_attribute_name("change_of_time_possible") %>
+        <%= f.input :change_of_time_possible, label: @vehicle_journey.human_attribute_name("change_of_time_possible") %>
       </p>
       <% f.object.build_booking_arrangement unless f.object.booking_arrangement %>
       <%= render "booking_arrangements/form", :form => f %>
