@@ -10,7 +10,7 @@
         <%= f.input :flexible_service_type, :as => :select, :collection => Chouette::VehicleJourney.flexible_service_types, :include_blank => true %>
       </p>
       <p>
-        <%= f.input :cancellation_possible %>
+        <%= f.input :cancellation_possible, t("flexible_properties_cancellation_possible") %>
       </p>
       <p>
         <%= f.input :change_of_time_possible %>
