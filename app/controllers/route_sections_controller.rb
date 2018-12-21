@@ -14,7 +14,14 @@ class RouteSectionsController < ChouetteController
   helper_method :search
 
   def index
-    index!
+    index! do |format|
+      format.html {
+        if collection.out_of_range?
+          redirect_to params.merge(:page => 1)
+        end
+        build_breadcrumb :index
+      }
+    end
   end
 
   def new
