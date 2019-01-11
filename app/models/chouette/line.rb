@@ -35,6 +35,8 @@ class Chouette::Line < Chouette::TridentActiveRecord
 
   validates_presence_of :name
 
+  before_validation :update_object_id_line_flexible_service
+
   def self.nullable_attributes
     [:published_name, :transport_submode_name, :number, :comment, :url, :color, :text_color, :stable_id]
   end
@@ -109,6 +111,17 @@ class Chouette::Line < Chouette::TridentActiveRecord
 
   def footnote_tokens=(ids)
     self.footnote_ids = ids.split(",")
+  end
+
+  def update_object_id_line_flexible_service
+    if self.flexible_service
+      self.objectid = self.objectid.sub(":Line", ":FlexibleLine")
+
+    else if (self.flexible_service == false || self.flexible_service.nil? || self.flexible_service.empty?)
+           self.objectid = self.objectid.sub(":FlexibleLine", ":Line")
+         end
+    end
+    write_attribute(:objectid, self.objectid)
   end
 
 
