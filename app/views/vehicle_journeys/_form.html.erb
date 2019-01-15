@@ -13,15 +13,12 @@
         <%= form.input :service_alteration_name, :as => :select, :collection => Chouette::VehicleJourney.service_alterations, :include_blank => true, :member_label => Proc.new {|mode| t("service_alterations.label.#{mode}")} %>
         <%= form.input :flexible_service, :as => :select, :collection => [[vehicle_journey.human_attribute_name("on_demand_fs"), true], [vehicle_journey.human_attribute_name("regular_fs"), false]], :include_blank => true %>
         <div class="flexible_service_details">
-          <% unless form.object.flexible_service_properties.nil? %>
               <%= form.semantic_fields_for :flexible_service_properties, form.object.flexible_service_properties do |f| %>
               <%= render "flexible_service_property_fields", :f => f %>
                   <% end %>
-          <% else %>
               <div class="links">
                 <%= link_to_add_association t("vehicle_journeys.actions.add_flexible_service_properties"), form, :flexible_service_properties, :class => 'add_flexible_service_properties add' %>
               </div>
-          <% end %>
 
 
         </div>
@@ -44,3 +41,49 @@
 <% end %>
 
 <%= render 'form_footer', vehicle_journey: vehicle_journey %>
+
+<script>
+    $(function () {
+        $("#vehicle_journey_flexible_service_input").change(function() {
+            var flexibleService = $("#vehicle_journey_flexible_service").val();
+            if (flexibleService === "true"){
+                $(".flexible_service_details").show();
+                $(".links").show();
+            } else {
+                $(".remove_fields").trigger("click");
+                $(".flexible_service_details").hide();
+            }
+        });
+    });
+
+    $(function () {
+        $("#vehicle_journey_flexible_service_input").ready(function() {
+            var flexibleService = $("#vehicle_journey_flexible_service").val();
+            if (flexibleService === "true"){
+                $(".flexible_service_details").show();
+            } else {
+                $(".flexible_service_details").hide();
+            }
+        });
+    });
+
+    $(function () {
+       $(".add_flexible_service_properties").click(function() {
+           var flexibleService = $("#vehicle_journey_flexible_service").val();
+           if (flexibleService === "true") {
+              $(".links").hide();
+           }
+       });
+    });
+
+    $(function () {
+        $(".add_flexible_service_properties").ready(function() {
+            var flexibleService = $("#vehicle_journey_flexible_service").val();
+            if (flexibleService === "true" && $(".remove_fields").is(":visible")) {
+                $(".links").hide();
+            }
+        });
+    });
+
+
+</script>

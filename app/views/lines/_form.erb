@@ -21,7 +21,6 @@
 
     <%= form.input :flexible_service, :as => :select, :collection => [[@line.human_attribute_name("on_demaond_fs"), true], [@line.human_attribute_name("regular_fs"), false]], :include_blank => true %>
 
-    <% if @line.flexible_service? %>
       <div class="flexible_service_details">
 
         <p>
@@ -32,7 +31,6 @@
 
 
       </div>
-    <% end %>
 
   <% end %>
 
@@ -53,5 +51,27 @@
       noResultsText: '<%= t('no_result_text') %>',
       searchingText: '<%= t('searching_term') %>'
     });
+  });
+
+  $(function () {
+      $("#line_flexible_service_input").change(function() {
+        var flexibleService = $("#line_flexible_service").val();
+        if (flexibleService === "true"){
+            $(".flexible_service_details").show();
+        } else {
+            $(".flexible_service_details").hide();
+        }
+      });
+  });
+
+  $(function () {
+      $("#line_flexible_service_input").ready(function() {
+          var flexibleService = $("#line_flexible_service").val();
+          if (flexibleService === "true"){
+              $(".flexible_service_details").show();
+          } else {
+              $(".flexible_service_details").hide();
+          }
+      });
   });
 </script>

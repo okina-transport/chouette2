@@ -7,7 +7,7 @@
         <%= f.input :objectid, :label => t('flexible_service_properties_objectid'), :input_html => { :value => @vehicle_journey.objectid.sub(":VehicleJourney", ":FlexibleServiceProperties") }%>
       </p>
       <p>
-        <%= f.input :flexible_service_type, :label => t('flexible_service_type'), :as => :select, :collection => Chouette::VehicleJourney.flexible_service_types, :include_blank => false, :member_label => Proc.new {|mode| t("flexible_service_types.label.#{mode}")}, :selected => "dynamicPassingTimes"%>
+        <%= f.input :flexible_service_type, :label => t('flexible_service_type'), :as => :select, :collection => Chouette::VehicleJourney.flexible_service_types, :include_blank => false, :member_label => Proc.new {|mode| t("flexible_service_types.label.#{mode}")}%>
       </p>
       <p>
         <%= f.input :cancellation_possible, label: @vehicle_journey.human_attribute_name("cancellation_possible") %>
@@ -19,3 +19,14 @@
       <%= render "booking_arrangements/form", :form => f %>
   <% end %>
 </div>
+
+<script>
+    $(function () {
+        $(".remove_fields").click(function() {
+            var flexibleService = $("#vehicle_journey_flexible_service").val();
+            if (flexibleService === "true") {
+                $(".links").show();
+            }
+        });
+    });
+</script>
