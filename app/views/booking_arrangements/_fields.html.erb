@@ -3,8 +3,8 @@
   <%= link_to_remove_association "<i class='fa fa-trash-o'></i>".html_safe, f %>
 
   <%= f.input :id, :as  => :hidden %>
-  <%= f.input :booking_access, :label => t(@line.human_attribute_name("booking_access")), :as => :select, :collection => Chouette::BookingArrangement.booking_access_types, :include_blank => false, :member_label => Proc.new {|mode| t("booking_access_types.label.#{mode}")} %>
-  <%= f.input :book_when, :label => t(@line.human_attribute_name("book_when")), :as => :select, :collection => Chouette::BookingArrangement.purchase_when_types, :include_blank => false, :member_label => Proc.new {|mode| t("purchase_when_types.label.#{mode}")} %>
+  <%= f.input :booking_access, :label => t(@line.human_attribute_name("booking_access")), :as => :select, :collection => Chouette::BookingArrangement.booking_access_types, :include_blank => true, :member_label => Proc.new {|mode| t("booking_access_types.label.#{mode}")} %>
+  <%= f.input :book_when, :label => t(@line.human_attribute_name("book_when")), :as => :select, :collection => Chouette::BookingArrangement.purchase_when_types, :include_blank => true, :member_label => Proc.new {|mode| t("purchase_when_types.label.#{mode}")} %>
   <%= f.input :buy_when, :label => t(@line.human_attribute_name("buy_when")), :as => :check_boxes, :collection => Chouette::BookingArrangement.purchase_moment_types, :include_blank => false, :member_label => Proc.new {|mode| t("purchase_moment_types.label.#{mode}")} %>
   <%= f.input :booking_methods, :label => t(@line.human_attribute_name("booking_methods")), :as => :check_boxes, :collection => Chouette::BookingArrangement.booking_method_types, :include_blank => false, :member_label => Proc.new {|mode| t("booking_method_types.label.#{mode}")} %>
   <%= f.input :latest_booking_time, :label => t(@line.human_attribute_name("latest_booking_time")), :as => :time_picker %>
