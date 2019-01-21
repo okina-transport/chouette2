@@ -40,7 +40,7 @@ class Chouette::FlexibleLineType < ActiveSupport::StringInquirer
       ["flexibleAreasOnly",3],
       ["hailAndRideSections",4],
       ["fixedStopAreaWide",5],
-      ["freeAreaAreaWide",6],
+ #     ["freeAreaAreaWide",6],
       ["mixedFlexible",7],
       ["mixedFlexibleAndFixed",8],
       ["fixed",9],
