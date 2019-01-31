@@ -5,8 +5,8 @@ class Chouette::BookingArrangement < Chouette::ActiveRecord
   has_many :buy_when_objects, :class_name => 'Chouette::BookingArrangementsBuyWhen', :autosave => true, :dependent => :delete_all
   has_many :booking_method_objects, :class_name => 'Chouette::BookingArrangementsBookingMethod', :autosave => true, :dependent => :delete_all
 
-  validates_presence_of :booking_method_objects
-  validates_presence_of :buy_when_objects
+  # validates_presence_of :booking_method_objects
+  # validates_presence_of :buy_when_objects
 
   def buy_when
     buy_when_objects.map {|bw| bw.buy_when}
