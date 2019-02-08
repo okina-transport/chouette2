@@ -3,18 +3,24 @@
       <p>
         <%= link_to_remove_association t("remove_flexible_service_properties"), f %>
       </p>
+    <% unless @vehicle_journey.nil? %>
+    <% unless @vehicle_journey.flexible_service_properties.objectid.blank? %>
       <p>
-        <%= f.input :objectid, :label => t('flexible_service_properties_objectid'), :input_html => { :value => @vehicle_journey.objectid.sub(":VehicleJourney", ":FlexibleServiceProperties") }%>
+        <%= f.input :objectid, :label => t('flexible_service_properties_objectid')%>
       </p>
+    <% end %>
+    <% end %>
       <p>
         <%= f.input :flexible_service_type, :label => t('flexible_service_type'), :as => :select, :collection => Chouette::VehicleJourney.flexible_service_types, :include_blank => false, :member_label => Proc.new {|mode| t("flexible_service_types.label.#{mode}")}%>
       </p>
+    <% unless @vehicle_journey.nil? %>
       <p>
         <%= f.input :cancellation_possible, label: @vehicle_journey.human_attribute_name("cancellation_possible") %>
       </p>
       <p>
         <%= f.input :change_of_time_possible, label: @vehicle_journey.human_attribute_name("change_of_time_possible") %>
       </p>
+    <% end %>
       <% f.object.build_booking_arrangement unless f.object.booking_arrangement %>
       <%= render "booking_arrangements/form", :form => f %>
   <% end %>
