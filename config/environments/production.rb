@@ -115,9 +115,9 @@ Rails.application.configure do
   #  config.accept_user_creation = false
 
   # Nouvelle Aquitaine
-  config.company_name = "Nouvelle Aquitaine"
+  config.company_name = "Mosaic"
   config.company_theme = "#C31632" # Entur color
-  config.company_contact = "https://www.nouvelle-aquitaine.fr/contactez-nous"
+  config.company_contact = "https://www.ratpdev.com/fr/accueil"
   config.accept_user_creation = false
 
   # file to data for demo
