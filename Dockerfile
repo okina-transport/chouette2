@@ -18,6 +18,8 @@ RUN gem install bundler -v 1.13.5
 COPY . /code
 WORKDIR /code
 
+COPY docker_config/* /code/config/
+
 RUN git log -n 1 --pretty=format:"%H" > /version
 
 # Line below is to try to solve nokogiri build failure
