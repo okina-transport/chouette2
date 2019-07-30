@@ -14,12 +14,12 @@ docker run --name chouette2-dev \
     -v $PWD:/code \
     --link postgres_okina_ratp_dev:chouette-db \
     --link okina-back-base-ratpdev:chouette-iev \
-    -e CHOUETTE_SMTP_HOST=smtp.okina.fr \
-    -e CHOUETTE_SMTP_PORT=587 \
+    -e CHOUETTE_SMTP_HOST=xxxxxx \
+    -e CHOUETTE_SMTP_PORT=xxxxxxx \
     -e CHOUETTE_SMTP_DOMAIN=okina.fr \
-    -e CHOUETTE_SMTP_USER=webmaster@okina.fr \
-    -e CHOUETTE_SMTP_PASSWORD=webOKINA2% \
-    -e CHOUETTE_SMTP_SENDER=webmaster@okina.fr \
+    -e CHOUETTE_SMTP_USER=xxxxxxxxx \
+    -e CHOUETTE_SMTP_PASSWORD=xxxxxxxx \
+    -e CHOUETTE_SMTP_SENDER=xxxxxxxx \
     -e CHOUETTE_DOMAIN_NAME=localhost \
     registry.okina.fr/mosaic/chouette2-dev:1.0
 ```
