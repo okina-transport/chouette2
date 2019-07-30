@@ -1,7 +1,27 @@
 Machine de dev sous docker
 
+Pour construire l'image de dev : se placer à la racine du projet puis
+``` bash
+docker build -t registry.okina.fr/mosaic/chouette2-dev:1.0 -f dev/Dockerfile .
+```
+
+Puis pour l'utiliser :    
+``` bash
+docker stop chouette2-dev
+docker rm chouette2-dev
 docker run --name chouette2-dev \
-    -p 3000:3000 
-    -v $PWD:/code 
-    --link postgres_chouette_mosaic:chouette-db
-    --link container_chouette-iev:chouette-iev
+    -p 3000:3000 \
+    -v $PWD:/code \
+    --link postgres_okina_ratp_dev:chouette-db \
+    --link okina-back-base-ratpdev:chouette-iev \
+    -e CHOUETTE_SMTP_HOST=smtp.okina.fr \
+    -e CHOUETTE_SMTP_PORT=587 \
+    -e CHOUETTE_SMTP_DOMAIN=okina.fr \
+    -e CHOUETTE_SMTP_USER=webmaster@okina.fr \
+    -e CHOUETTE_SMTP_PASSWORD=webOKINA2% \
+    -e CHOUETTE_SMTP_SENDER=webmaster@okina.fr \
+    -e CHOUETTE_DOMAIN_NAME=localhost \
+    registry.okina.fr/mosaic/chouette2-dev:1.0
+```
+
+Les containers postgres_okina_ratp_dev et okina-back-base-ratpdev doivent être lancés avant de lancer la commande.

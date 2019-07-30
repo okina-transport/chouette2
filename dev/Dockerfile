@@ -17,10 +17,8 @@ RUN gem install bundler -v 1.13.5
 
 RUN mkdir /code
 WORKDIR /code
-COPY Gemfile /code/Gemfile
-COPY Gemfile.lock /code/Gemfile.lock
-
-COPY dev/*.yml /code/config/
+COPY Gemfile /code/
+COPY Gemfile.lock /code/
 
 EXPOSE 3000
 
@@ -28,4 +26,4 @@ RUN bundler install
 
 ENV RAILS_ENV=production
 ENV IEV_DISABLE_CACHE=true
-CMD rails s -b 0.0.0.0 -p 3000
+CMD RAILS_ENV=development rails s -b 0.0.0.0 -p 3000
