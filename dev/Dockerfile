@@ -15,18 +15,15 @@ RUN apt-get install -y less build-essential patch vim sendmail
 
 RUN gem install bundler -v 1.13.5
 
-COPY . /code
+RUN mkdir /code
 WORKDIR /code
-
-COPY docker_config/* /code/config/
-
-# Line below is to try to solve nokogiri build failure
-RUN bundle config build.nokogiri --use-system-libraries
-
-RUN bundle install
+COPY Gemfile /code/
+COPY Gemfile.lock /code/
 
 EXPOSE 3000
 
+RUN bundler install
+
 ENV RAILS_ENV=production
 ENV IEV_DISABLE_CACHE=true
-CMD [ "dumb-init", "bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD RAILS_ENV=development rails s -b 0.0.0.0 -p 3000

@@ -1,0 +1,31 @@
+default: &default
+  adapter: postgis
+  encoding: unicode
+  port: <%= ENV.fetch('CHOUETTE_DATABASE_PORT') %>
+  host: <%= ENV.fetch('CHOUETTE_DATABASE_HOST') %>
+  schema_search_path: 'public,shared_extensions'
+  username: <%= ENV.fetch('CHOUETTE_DATABASE_USER') %>
+  password: <%= ENV.fetch('CHOUETTE_DATABASE_PASSWORD') %>
+  postgis_schema: 'shared_extensions'
+
+# NOTE: The the dev database set currently point at chouette-test. This is
+# to be able to build it in jenkins. Hopefully this will be sorted out
+development:
+  <<: *default
+  host: <%= ENV.fetch('CHOUETTE_DATABASE_HOST') %>
+  database: <%= ENV.fetch('CHOUETTE_DATABASE_NAME') %>
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  host: localhost
+  database: chouette-test
+
+production:
+  <<: *default
+  host: <%= ENV.fetch('CHOUETTE_DATABASE_HOST') %>
+  database: <%= ENV.fetch('CHOUETTE_DATABASE_NAME') %>
+
+# File originated from chouette2-config
