@@ -23,7 +23,9 @@
     <%= import_attributes_tag(import) %>
 
     <div class="history">
-      <%=  l(import.created_at, :format => "%d/%m/%Y %H:%M") if import.created_at %> | <%= import.user_name %>
+      <%=  l(import.created_at, :format => "%d/%m/%Y %H:%M") if import.created_at %>
+      <%= import.user_name %>
+      <%= import.description %>
     </div>
   </div>
 </div>
