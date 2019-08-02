@@ -57,6 +57,10 @@ module JobConcern
 
   def user_name
     datas.action_parameters.user_name
+    end
+
+  def description
+    datas.action_parameters.description
   end
 
   def created_at
