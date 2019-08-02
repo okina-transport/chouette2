@@ -15,6 +15,7 @@ class GtfsImport < ImportTask
       "gtfs-import" => {
         "no_save" => no_save,
         "user_name" => user_name,
+        "description" => description,
         "name" => name,
         "organisation_name" => organisation.name,
         "referential_name" => referential.name,
