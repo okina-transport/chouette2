@@ -32,7 +32,7 @@ Rails.application.configure do
   config.assets.digest = true
 
   # Must add sub uri for assets. Same as config.action_controller.relative_url_root
-  config.assets.prefix = "/offre"
+  config.assets.prefix = "/offre/assets"
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
