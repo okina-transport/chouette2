@@ -11,7 +11,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   # Must add sub uri for controllers.
-  config.action_controller.relative_url_root = "/offre"
+  config.action_controller.relative_url_root = "/offre/controllers"
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
