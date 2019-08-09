@@ -7,6 +7,18 @@
   <%= @map.to_html %>
 
   <div class="summary">
+
+
+    <p>
+      <label>Catégorie: </label>
+      <%= @line.categories_for_line.name%>
+    </p>
+
+    <p>
+      <label>Codifligne: </label>
+      <%= @line.codifligne %>
+    </p>
+
     <% text_color = @line.text_color.blank? ? "black" : "##{@line.text_color}" %>
     <% bg_color = @line.color.blank? ? "white" : "#"+@line.color %>
     <% if colors?(@line) %>

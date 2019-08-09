@@ -5,6 +5,8 @@ class Chouette::Line < Chouette::TridentActiveRecord
 
   belongs_to :company
   belongs_to :network
+  belongs_to :categories_for_line
+
   has_many :routes, :dependent => :destroy
   has_many :journey_patterns, :through => :routes
   has_many :vehicle_journeys, :through => :journey_patterns
@@ -20,6 +22,7 @@ class Chouette::Line < Chouette::TridentActiveRecord
   attr_reader :group_of_line_tokens, :footnote_tokens
   attr_accessor :transport_mode
   attr_accessor :transport_submode
+  # attr_accessor :CategoriesForLine
 
   belongs_to :booking_arrangement, :class_name => 'Chouette::BookingArrangement', :dependent => :destroy
   accepts_nested_attributes_for :booking_arrangement, :allow_destroy => :true
@@ -37,8 +40,13 @@ class Chouette::Line < Chouette::TridentActiveRecord
 
   before_validation :update_object_id_line_flexible_service
 
+  # def categories_for_line
+  #   return unless categories_for_line_id;
+  #   Chouette::CategoriesForLine.find(categories_for_line_id)
+  # end
+
   def self.nullable_attributes
-    [:published_name, :transport_submode_name, :number, :comment, :url, :color, :text_color, :stable_id]
+    [:published_name, :transport_submode_name, :number, :comment, :url, :color, :text_color, :stable_id, :codifligne]
   end
 
   def geometry_presenter
