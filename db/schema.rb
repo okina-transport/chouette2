@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190809103931) do
+ActiveRecord::Schema.define(version: 20190812074810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -418,7 +418,7 @@ ActiveRecord::Schema.define(version: 20190809103931) do
   create_table "lines", id: :bigserial, force: :cascade do |t|
     t.integer  "network_id",                      limit: 8
     t.integer  "company_id",                      limit: 8
-    t.string   "objectid",                                   null: false
+    t.string   "objectid",                                               null: false
     t.integer  "object_version"
     t.datetime "creation_time"
     t.string   "creator_id"
@@ -439,7 +439,7 @@ ActiveRecord::Schema.define(version: 20190809103931) do
     t.string   "flexible_line_type"
     t.integer  "booking_arrangement_id"
     t.string   "codifligne",                      limit: 50
-    t.integer  "categories_for_line_id"
+    t.integer  "categories_for_line_id",                     default: 0
   end
 
   add_index "lines", ["categories_for_line_id"], name: "index_lines_on_categories_for_line_id", using: :btree
