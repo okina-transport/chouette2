@@ -18,6 +18,7 @@
   <div class="panel-body">
     <p><%= link_to font_awesome_classic_tag("fa-file-#{import.filename_extension}-o") + t("imports.show.imported_file"), imported_file_referential_import_path(@referential, import.id) if import.file_path?  %></p>
     <p><%= link_to font_awesome_classic_tag("fa-external-link") + t("imports.show.compliance_check"), compliance_check_referential_import_path(@referential, import.id) if import.compliance_check? %></p>
+    <p><%= link_to font_awesome_classic_tag("fa-bell") + "Liste des variations", "variations/"+import.id.to_s %></p>
   </div>
   <div class="panel-footer">
     <%= import_attributes_tag(import) %>
