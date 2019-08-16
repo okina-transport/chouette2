@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190812074810) do
+ActiveRecord::Schema.define(version: 20190812122759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -760,10 +760,10 @@ ActiveRecord::Schema.define(version: 20190812074810) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "variations", id: false, force: :cascade do |t|
-    t.integer "id",          limit: 8,   default: 0, null: false
-    t.string  "type",        limit: 255,             null: false
-    t.string  "description", limit: 255,             null: false
-    t.integer "job",         limit: 8
+    t.integer "id",           limit: 8,    default: 0, null: false
+    t.string  "typev",        limit: 255,              null: false
+    t.string  "descriptionv", limit: 1024,             null: false
+    t.integer "jobv",         limit: 8
     t.text    "objectid"
   end
 

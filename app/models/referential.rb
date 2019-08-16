@@ -50,6 +50,10 @@ class Referential < ActiveRecord::Base
     Chouette::Line.all
   end
 
+  def variations(*args)
+    Chouette::Variations.all
+  end
+
   def networks
     Chouette::Network.all
   end

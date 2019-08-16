@@ -1,0 +1,15 @@
+<%= title_tag "Liste des variations - " + @import.name %>
+
+<% @variations.each do |variation| %>
+  <div id="index_item" class="panel panel-default line ce-LineBlock">
+    <div class="panel-heading ce-LineBlock-header">
+      <%= variation.typev %>
+    </div>
+    <div class="panel-body">
+      <p>
+        <%= variation.descriptionv %>
+      </p>
+    </div>
+  </div>
+<% end %>
+

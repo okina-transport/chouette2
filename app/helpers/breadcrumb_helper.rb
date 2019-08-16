@@ -41,6 +41,8 @@ module BreadcrumbHelper
       timeband_breadcrumb action
     when "Chouette::Interchange"
       interchange_breadcrumb action
+    when "Chouette::Variations"
+      variations_breadcrumb action
     when "StopAreaCopy"
       stop_area_copy_breadcrumb action
     when "Import"
@@ -199,6 +201,11 @@ module BreadcrumbHelper
     #add_breadcrumb @rule_parameter_set.import.name, compliance_check_referential_import_path(@referential, @rule_parameter_set.import.id) if action == :rule_parameter_set
 
     #add_breadcrumb "Tests de conformité", compliance_check_referential_import_path(@referential, @compliance_check.id) if @compliance_check
+  end
+
+  def variations_breadcrumb (action)
+    referential_breadcrumb
+    add_breadcrumb Referential.human_attribute_name("imports"), referential_imports_path(@referential) unless action == :index
   end
 
   def export_breadcrumb (action)
