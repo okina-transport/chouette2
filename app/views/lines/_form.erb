@@ -7,7 +7,7 @@
     <%= form.input :published_name %>
     <%= form.input :registration_number, :input_html => {:title => t("formtastic.titles#{format_restriction_for_locales(@referential)}.line.registration_number")} %>
     <%= form.input :number, :input_html => {:title => t("formtastic.titles#{format_restriction_for_locales(@referential)}.line.number")} %>
-    <%= form.input :categories_for_line_id, :as=> :select, :label => ('Catégorie'),  :collection => Chouette::CategoriesForLine.all%>
+    <%= form.input :categories_for_line_id, :as=> :select, :label => ('Catégorie'),  :collection => Chouette::CategoriesForLine.all, :include_blank => false%>
     <%= form.input :codifligne %>
     <%= form.input :transport_mode, :as => :select, :collection => Chouette::Line.transport_modes, :include_blank => false, :member_label => Proc.new {|mode| t("transport_modes.label.#{mode}")} %>
     <%= form.input :transport_submode, :as => :select, :collection => Chouette::Line.transport_submodes, :include_blank => true, :member_label => Proc.new {|mode| t("transport_submodes.label.#{mode}")} %>
