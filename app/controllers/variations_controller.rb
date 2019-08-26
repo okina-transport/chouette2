@@ -17,4 +17,15 @@ class VariationsController < ChouetteController
       @variations = Chouette::Variations.all;
     end
   end
+
+  def index
+      @variations = Chouette::Variations.where(:jobv => params[:job_id])
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @variations.to_csv, filename: "variations-#{params[:job_id]}.csv" }
+    end
+  end
+
 end
+

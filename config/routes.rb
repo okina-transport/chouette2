@@ -70,7 +70,7 @@ ChouetteIhm::Application.routes.draw do
 
     resources :networks
 
-    resources :variations, :only => [:show]
+    resources :variations
 
     resources :lines do
       delete :index, on: :collection, action: :delete_all
