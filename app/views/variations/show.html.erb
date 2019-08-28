@@ -11,12 +11,19 @@
       </p>
     </div>
 <% end %>
+  <% if @variations.empty? %>
+    <div>
+      <p>Aucune variation</p>
+    </div>
+  <% end %>
 </div>
 
+<% unless @variations.empty? %>
 <div id="sidebar" class="col-md-3">
   <a class="add">
     <%= link_to "Export CSV", referential_variations_path(format: "csv", :job_id => @import.id ) %>
   </a>
 </div>
+<% end %>
 
 
