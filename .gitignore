@@ -36,5 +36,4 @@ coverage
 
 .localeapp
 locales
-/public/offre/
-/public/assets/
+/public/*
