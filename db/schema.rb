@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190903085552) do
+ActiveRecord::Schema.define(version: 20190904071245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -441,6 +441,7 @@ ActiveRecord::Schema.define(version: 20190903085552) do
     t.string   "codifligne",                      limit: 50
     t.integer  "categories_for_line_id",                     default: 0
     t.string   "codifligneCommercial",            limit: 50
+    t.string   "partenaire",                      limit: 50
   end
 
   add_index "lines", ["categories_for_line_id"], name: "index_lines_on_categories_for_line_id", using: :btree

@@ -22,6 +22,11 @@
       </ul>
     </p>
 
+    <p>
+      <label>Partenaire: </label>
+      <%= @line.partenaire%>
+    </p>
+
     <% text_color = @line.text_color.blank? ? "black" : "##{@line.text_color}" %>
     <% bg_color = @line.color.blank? ? "white" : "#"+@line.color %>
     <% if colors?(@line) %>
