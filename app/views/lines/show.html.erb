@@ -16,7 +16,10 @@
 
     <p>
       <label>Codifligne: </label>
-      <%= @line.codifligne %>
+      <ul>
+        <li></li><i>Administratif</i> : <%= @line.codifligne %>
+        <li><i>Commercial</i> : <%= @line.codifligneCommercial %></li>
+      </ul>
     </p>
 
     <% text_color = @line.text_color.blank? ? "black" : "##{@line.text_color}" %>
