@@ -46,7 +46,7 @@ class Chouette::Line < Chouette::TridentActiveRecord
   # end
 
   def self.nullable_attributes
-    [:published_name, :transport_submode_name, :number, :comment, :url, :color, :text_color, :stable_id, :codifligne]
+    [:published_name, :transport_submode_name, :number, :comment, :url, :color, :text_color, :stable_id, :codifligne, :operator]
   end
 
   def geometry_presenter

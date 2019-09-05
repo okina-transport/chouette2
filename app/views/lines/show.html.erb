@@ -19,6 +19,11 @@
       <%= @line.codifligne %>
     </p>
 
+    <p>
+      <label>Opérateur: </label>
+      <%= @line.operator %>
+    </p>
+
     <% text_color = @line.text_color.blank? ? "black" : "##{@line.text_color}" %>
     <% bg_color = @line.color.blank? ? "white" : "#"+@line.color %>
     <% if colors?(@line) %>
