@@ -443,6 +443,7 @@ ActiveRecord::Schema.define(version: 20190905075845) do
     t.string   "codifligneCommercial",            limit: 50
     t.string   "partenaire",                      limit: 50
     t.string   "operator",                        limit: 50
+    t.string   "partenaire",                      limit: 50
   end
 
   add_index "lines", ["categories_for_line_id"], name: "index_lines_on_categories_for_line_id", using: :btree
