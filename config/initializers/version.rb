@@ -1,5 +1,5 @@
 module Chouette
   class Application
-    VERSION = '3.4.0.OKI'
+    VERSION = '1.5'
   end
 end
