@@ -25,8 +25,6 @@ RUN bundle config build.nokogiri --use-system-libraries
 
 RUN bundle install
 
-RUN CHOUETTE_SUB_URI_CONTROLLERS="/offre" CHOUETTE_SUB_URI_ASSETS="/offre"  RAILS_ENV=production bundle exec rake assets:clobber assets:precompile
-
 EXPOSE 3000
 
 ENV RAILS_ENV=production
