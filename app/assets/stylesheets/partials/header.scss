@@ -39,6 +39,15 @@
         }
     }
 
+    .more-vert {
+      margin-left: 5px;
+      margin-right: 5px;
+      img{
+        max-width: 20px;
+        max-height: 20px;
+      }
+    }
+
     .dropdown.languages{
         .dropdown-menu{ 
             min-width: 56px;
